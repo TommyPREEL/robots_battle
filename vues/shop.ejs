@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil page</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <%- include("header_connected") %>
+    
+    <div class="skills-ligne">
+    Shop
+    <% for(let index=0; index < items.length; index++) { %>
+            <% if(items[index].isEquipped == 0) { %>
+                <div class="item"><a href="/game/<%= robot.id_users %>/<%= robot.id_robots %>/equip/<%= items[index].id_items %>/<%= items[index].type %>">
+                <img class="img-bag" src="<%= items[index].img %>">
+            </a></div>
+            <% } %>
+    <% } %>
+
+</body>
+
+</html>

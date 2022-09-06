@@ -27,11 +27,11 @@ function getRobotsByUser(id_user) {
     })
 }
 
-function getAllRobotsExceptUser(id_user) {
+function getItemById(id_items) {
     return new Promise((result, reject) => {
-        con.query("SELECT * FROM robots WHERE id_users != ?", [id_user], (err, data) => {
+        con.query("SELECT * FROM items WHERE id_items = ?", [id_items], (err, data) => {
             if (err) reject(err)
-            else result(data)
+            else result(data[0])
         })
     })
 }
@@ -63,7 +63,8 @@ function getEquippedItemsByType(robot, item_type){
         JOIN robots_items ON items.id_items = robots_items.id_items
         WHERE robots_items.id_users = ?
         AND robots_items.id_robots = ?
-        AND items.type = ?`, [robot.id_users, robot.id_robots, item_type], (err, data) => {
+        AND items.type = ?
+        AND robots_items.isEquipped = 1`, [robot.id_users, robot.id_robots, item_type], (err, data) => {
             if (err) reject(err)
             else result(data)
         })
@@ -121,5 +122,6 @@ module.exports = {
     getEquippedItemsByType,
     unequipItem,
     equipItem,
-    getEquippedItemsByRobot
+    getEquippedItemsByRobot,
+    getItemById
 }

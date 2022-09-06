@@ -10,9 +10,16 @@
 
     <body>
         <div>Email <%= userConnected.email %></div>
+        <% if(typeof robot !="undefined") { %>
         <div><a href="/game/<%= userConnected.id_users %>/<%= robot.id_robots %>">Robot: <%= robot.nickname%></a></div>
+        <% }%>
         <div><a href="/<%= userConnected.id_users %>/select_robot">Change robots</a></div>
+        <% if(typeof robot !="undefined") { %>
         <div><a href="/game/<%= userConnected.id_users %>/<%= robot.id_robots %>/arena">Arena !</a></div>
+        <% }%>
+        <% if(typeof robot !="undefined") { %>
+        <div><a href="/game/<%= userConnected.id_users %>/<%= robot.id_robots %>/shop">Shop</a></div>
+        <% }%>
         <div><a href="/logout">Logout</a></div>
     </body>
 

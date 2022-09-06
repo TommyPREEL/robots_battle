@@ -1,6 +1,5 @@
 const { render } = require('ejs');
 const express = require('express')
-const CompteBancaire = require('./classe/compteBancaire')
 const User = require('./classe/user')
 const Robot = require('./classe/robot')
 const Item = require('./classe/item')
@@ -8,8 +7,8 @@ const { connectUser, createUser } = require("./model/users")
 const bodyParser = require('body-parser'); // Middleware
 var session = require('express-session');
 const { createPoolCluster } = require('mysql2');
-const { getAllNicknames, createRobot, getRobotsByUser, getAllRobotsExceptUser, getRobotByUserAndId, updateRobot} = require('./model/robots');
-const { getItemsByRobot, getEquippedItemsByType, equipItem, unequipItem, getEquippedItemsByRobot} = require('./model/items');
+const { getAllNicknames, createRobot, getRobotsByUser, getAllRobotsExceptUser, getRobotByUserAndId, updateRobot, updateStatsRobotEquip, updateStatsRobotUnequip} = require('./model/robots');
+const { getItemsByRobot, getEquippedItemsByType, equipItem, unequipItem, getEquippedItemsByRobot, getItemById} = require('./model/items');
 
 
 const app = express()
@@ -24,7 +23,8 @@ app.use(express.urlencoded())
 
 app.use(session({secret: "Secreeet",
                 userConnected: {},
-                selectedRobot: {}
+                selectedRobot: {},
+                shop: {}
             })
         );
 
@@ -103,16 +103,21 @@ app.get("/game/:id_users/:id_robots", (req, res) => {
         let myRobot = new Robot(data.id_users, data.id_robots, data.nickname, data.level, data.experience, data.money, data.hp, data.strength, data.armor, data.agility)
         req.session.selectedRobot = /*myRobot*/ {id_users: data.id_users, id_robots: data.id_robots, nickname: data.nickname, level: data.level, experience: data.experience, money: data.money, hp: data.hp, strength: data.strength, armor: data.armor, agility: data.agility}
         getItemsByRobot(myRobot).then((data2) => {
-
-/*
-            // TRAITEMENT DES CHANGEMENTS DE STATS DES EQUIPEMENTS
-            getEquippedItemsByRobot(myRobot).then((data2) => {
-                for(item in data2){
-
+            getEquippedItemsByRobot(myRobot).then((data3) => {
+                let hp = 0;
+                let strength = 0;
+                let armor = 0;
+                let agility = 0;
+                for(data of data3){
+                    hp += data.modHP
+                    strength += data.modStr
+                    armor += data.modArm
+                    agility += data.modAgi
                 }
-*/
-                res.render("profil", { robot: req.session.selectedRobot, userConnected: req.session.userConnected, items: data2})
-            //})
+
+                let updateStats = {"hp": hp, "strength": strength, "armor": armor, "agility": agility}
+                res.render("profil", { robot: req.session.selectedRobot, userConnected: req.session.userConnected, items: data2, updateStats: updateStats})
+            })
         })
     })
 })
@@ -153,13 +158,25 @@ app.get("/game/:id_users/:id_robots/equip/:id_items/:item_type", (req, res) => {
         getEquippedItemsByType(myRobot, req.params.item_type).then((data2) => {
             if(data2.length == 1){
                 unequipItem(myRobot, data2.id_items).then(() => {
-                    equipItem(myRobot, req.params.id_items).then((data3) => {
-                        res.redirect(`/game/${req.params.id_users}/${req.params.id_robots}`)
+                    getItemById(data2.id_items).then((data3) => {
+                        updateStatsRobotUnequip(myRobot, data3).then(() => {
+                            equipItem(myRobot, req.params.id_items).then(() => {
+                                getItemById(req.params.id_items).then((data4) => {
+                                    updateStatsRobotEquip(myRobot, data4).then(() => {
+                                        res.redirect(`/game/${req.params.id_users}/${req.params.id_robots}`)
+                                    })
+                                })
+                            })
+                        })
                     })
                 })
             }else{
-                equipItem(myRobot, req.params.id_items).then((data3) => {
-                    res.redirect(`/game/${req.params.id_users}/${req.params.id_robots}`)
+                equipItem(myRobot, req.params.id_items).then(() => {
+                    getItemById(req.params.id_items).then((data5) => {
+                        updateStatsRobotEquip(myRobot, data5).then(() => {
+                            res.redirect(`/game/${req.params.id_users}/${req.params.id_robots}`)
+                        })
+                    })
                 })
             }
         })
@@ -169,9 +186,21 @@ app.get("/game/:id_users/:id_robots/equip/:id_items/:item_type", (req, res) => {
 app.get("/game/:id_users/:id_robots/unequip/:id_items/:item_type", (req, res) => {
     getRobotByUserAndId(req.params.id_users, req.params.id_robots).then((data) => {
         let myRobot = (new Robot(data.id_users, data.id_robots, data.nickname, data.level, data.experience, data.money, data.hp, data.strength, data.armor, data.agility))
-            unequipItem(myRobot, req.params.id_items).then(() => {
-                res.redirect(`/game/${req.params.id_users}/${req.params.id_robots}`)
+        unequipItem(myRobot, req.params.id_items).then(() => {
+            getItemById(req.params.id_items).then((data2) => {
+                updateStatsRobotUnequip(myRobot, data2).then(() => {
+                    res.redirect(`/game/${req.params.id_users}/${req.params.id_robots}`)
+                })
+            })
         })
+    })
+})
+
+app.get("/game/:id_users/:id_robots/shop", (req, res) => {
+    getRobotByUserAndId(req.params.id_users, req.params.id_robots).then((data) => {
+        let myRobot = (new Robot(data.id_users, data.id_robots, data.nickname, data.level, data.experience, data.money, data.hp, data.strength, data.armor, data.agility))
+        getItemsInShop(myRobot)
+        res.render("shop", { robot: req.session.selectedRobot/*myRobot*/, userConnected: req.session.userConnected})
     })
 })
 

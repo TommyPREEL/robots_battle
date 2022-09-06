@@ -54,11 +54,39 @@ function updateRobot(robot){
     })
 }
 
+function updateStatsRobotEquip(robot, items){
+    let hp = (+robot.hp) + (+items.modHP)
+    let strength = (+robot.strength) + (+items.modStr)
+    let armor = (+robot.armor) + (+items.modArm)
+    let agility = (+robot.agility) + (+items.modAgi)
+    return new Promise((result, reject) => {
+        con.query("UPDATE robots SET hp = ?, strength = ?, armor = ?, agility = ? WHERE id_users = ? AND id_robots = ?", [hp, strength, armor, agility, robot.id_users, robot.id_robots], (err, data) => {
+            if (err) reject(err)
+            else result(data[0])
+        })
+    })
+}
+
+function updateStatsRobotUnequip(robot, items){
+    let hp = (+robot.hp) - (+items.modHP)
+    let strength = (+robot.strength) - (+items.modStr)
+    let armor = (+robot.armor) - (+items.modArm)
+    let agility = (+robot.agility) - (+items.modAgi)
+    return new Promise((result, reject) => {
+        con.query("UPDATE robots SET hp = ?, strength = ?, armor = ?, agility = ? WHERE id_users = ? AND id_robots = ?", [hp, strength, armor, agility, robot.id_users, robot.id_robots], (err, data) => {
+            if (err) reject(err)
+            else result(data[0])
+        })
+    })
+}
+
 module.exports = {
     getAllNicknames,
     createRobot,
     getRobotsByUser,
     getAllRobotsExceptUser,
     getRobotByUserAndId,
-    updateRobot
+    updateRobot,
+    updateStatsRobotEquip,
+    updateStatsRobotUnequip
 }
