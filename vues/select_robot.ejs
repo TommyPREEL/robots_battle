@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select page</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <div><a href="/<%= userConnected.id_users %>/create_robot">Create a robot</a></div>
+    <% for( let index=0; index < robots.length; index++ ) { %>
+        <div class="skills-ligne"><a href="/game/<%= robots[index].id_users %>/<%= robots[index].id_robots %>">
+                <div>Nickname : <%= robots[index].nickname %></div>
+                <div>Level : <%= robots[index].level %></div>
+                <div>Experience : <%= robots[index].experience %></div>
+                <div>Strength : <%= robots[index].strength %></div>
+                <div>Armor : <%= robots[index].armor %></div>
+                <div>Agility : <%= robots[index].agility %></div>
+        </div>
+        <% } %>
+
+</body>
+
+</html>

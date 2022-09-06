@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte bancaire</title>
+    <link rel="stylesheet" href="/compte.css">
+</head>
+
+<body>
+    <% for( let index=0; index < comptes.length; index++ ) { %>
+
+        <div class="ligne"><a href="/detail/<%= comptes[index].numero %>/">
+                <div>Titulaire : <%= comptes[index].titulaire %>
+                </div>
+                <div>Numéro de compte : <%= comptes[index].numero %>
+                </div>
+                <div>Solde : <%= comptes[index].solde %>
+                </div>
+            </a>
+        </div>
+        <% } %>
+
+            </div>
+</body>
+
+</html>

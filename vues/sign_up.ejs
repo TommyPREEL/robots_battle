@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up !</title>
+        <link rel="stylesheet" href="/style.css">
+        <script src="/sign_up.js"></script>
+    </head>
+
+    <body>
+            
+            <form id="form" method="post" action="sign_up" onsubmit="return verifyPassword()">
+                <div>Email Address</div>
+                <input type="text" placeholder="Email Address" name="email">
+                <div>Password</div>
+                <input type="text" placeholder="Password" id="password" name="password">
+                <div>Confirm your password</div>
+                <input type="text" placeholder="Confirm your password" id="confirm-password" name="confirm-password">
+                <input type="submit" value="Sign up !">
+            </form>
+
+    </body>
+
+</html>
