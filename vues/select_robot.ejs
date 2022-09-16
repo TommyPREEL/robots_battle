@@ -10,10 +10,13 @@
 </head>
 <%- include("header_connected") %>
 <body>
-
-    <div><a href="/<%= userConnected.id_users %>/create_robot">Create a robot</a></div>
+<div class="body">
+    <div class="create-robot skill-ligne">
+    <div><h4><a href="/<%= userConnected.id_users %>/create_robot">Create a robot</a></h4></div>
     <% for( let index=0; index < robots.length; index++ ) { %>
-        <div class="skills-ligne"><a href="/game/<%= robots[index].id_users %>/<%= robots[index].id_robots %>">
+        <div class="skills-ligne selectrobot"><a href="/game/<%= robots[index].id_users %>/<%= robots[index].id_robots %>">
+                <div><img src="<%= robots[index].img %>" class="imgrobot"></div>
+                <div><%= robots[index].nickname %></div>
                 <div>Nickname : <%= robots[index].nickname %></div>
                 <div>Level : <%= robots[index].level %></div>
                 <div>Experience : <%= robots[index].experience %></div>
@@ -22,7 +25,8 @@
                 <div>Agility : <%= robots[index].agility %></div>
         </div>
         <% } %>
-
+    </div>
+</div>
 </body>
 
 </html>

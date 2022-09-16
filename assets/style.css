@@ -1,3 +1,13 @@
+body {
+    font-family: Roboto;
+}
+body a {
+    text-decoration: none;
+    color: #302b63;
+    font-family: Roboto;
+}
+
+
 .ligne {
     display: flex;
     justify-content: space-between;
@@ -8,20 +18,58 @@
     border-radius: 3px;
     padding: 5px;
 }
+.skill-ligne {
+    color: #FDFDFE;
+    width: 90%;
+    margin: auto;
+    border: solid 1px #16142f;
+    background-color: #161430ed;
+    padding: 10px;
+}
+
+.skill-ligne input[type="submit"] {
+    display: block;
+    margin: auto;
+    border: none;
+    outline: none;
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: white;
+    background-color: #34324e;
+    border: solid 1px #302b6336;
+    font-family: 'Open Sans';
+}
+
 .skills-ligne {
     display: flex;
+    margin: 5%;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
-    margin: 50px auto;
-    border: solid 1px black;
-    border-radius: 3px;
-    padding: 5px;
 }
+
+.skills-ligne input {
+    padding: 5px;
+    color: white;
+    background-color:#34324e;
+    border: solid 1px #302b6336;
+}
+
+.skills-ligne > div {
+    width: 65%
+}
+
+.skills-ligne .plus {
+    cursor: pointer;
+    position: relative;
+    left: 10%;
+}
+
+
 .item{
     background-color:black;
-    width:50px;
-    height: 50px;
+    max-width:50px;
+    max-height: 50px;
 }
 .item-weapon{
     background-color:black;
@@ -39,10 +87,143 @@
     height: 50px;
 }
 .img-bag{
-    width:50px;
-    height: 50px;
+    max-width:50px;
+    max-height: 50px;
 }
 .img-equipped{
-    width:50px;
-    height: 50px;
+    max-width:50px;
+    max-height: 50px;
+}
+.img-bag-lock{
+    max-width: 200px;
+    max-height: 200px;
+    filter: grayscale(1);
+}
+.img-bag-unlock{
+    max-width: 200px;
+    max-height: 200px;
+}
+.img-shop-lock{
+    max-width: 200px;
+    max-height: 200px;
+    filter: grayscale(1);
+}
+.img-shop-unlock{
+    max-width: 200px;
+    max-height: 200px;
+}
+.img-shop-lock-1::after{
+    content: 'Locked until level 0';
+    position: absolute;
+    background-color:white;
+    z-index:1;
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+}
+.img-shop-lock-2::before{
+    content: 'Locked until level 3';
+    position: absolute;
+    background-color:white;
+    z-index:1;
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+}
+.img-shop-lock-3::before{
+    content: 'Locked until level 5';
+    position: absolute;
+    background-color:white;
+    z-index:1;
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+}
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn,ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.imgrobot {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+.create-robot {
+	position:relative;
+	margin: auto;
+	margin-top: 5%;
+	width: 80%;
+	z-index: 2;
+}
+
+.selectrobot {
+    margin: auto;
+    max-width: 400px;
+}
+
+.create-robot h4 {
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+.create-robot h4 a {
+    color: rgba(255, 255, 255, 0.648)!important;
+}
+
+.selectrobot {
+    display: flex;
+    justify-content: space-between;
+}
+.selectrobot .imgrobot {
+    display: block;
+    margin: auto;
+    text-align:center;
 }

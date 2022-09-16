@@ -15,42 +15,40 @@
 <%- include("header_connected") %>
 
 <body>
+<div class="body">
+    <div class="create-robot">
+        <form action="create_robot" method="post" class="skill-ligne">
+            <h4>Create your robot ! </h4>
+            <div class="skills-ligne">
+                <div>Available skills points :</div>
+                <div id="total-point">10</div>
+            </div>
 
-            CREATE
-                <div>Id User <%= userConnected.id_users %></div>
-                <div>Email <%= userConnected.email %></div>
-                <br>
-                <br>
-                <form action="create_robot" method="post">
-                    <div class="skills-ligne">
-                        <div>Available skills points :</div>
-                        <div id="total-point">10</div>
-                    </div>
-
-                    <div class="skills-ligne">
-                        <div>Strength :</div>
-                        <div id="strength-less" onclick="subStrength()">-</div>
-                        <input name="strength_point" id="strength-point" value="0" readonly/>
-                        <div id="strength-more" onclick="addStrength()">+</div>
-                    </div>
-                    <div class="skills-ligne">
-                        <div>Armor :</div>
-                        <div id="armor-less" onclick="subArmor()">-</div>
-                        <input name="armor_point" id="armor-point" value="0" readonly/>
-                        <div id="armor-more" onclick="addArmor()">+</div>
-                    </div>
-                    <div class="skills-ligne">
-                        <div>Agility :</div>
-                        <div id="agility-less" onclick="subAgility()">-</div>
-                        <input name="agility_point" id="agility-point" value="0" readonly/>
-                        <div id="agility-more" onclick="addAgility()">+</div>
-                    </div>
-                    <br>
-                    <div class="skills-ligne"><div>Nickname :</div><div><input name="nickname" id="nickname" type="text"/></div></div>
-                    <br>
-                    <input type="submit" value="Create robot !"/>
-                </form>
-                
+            <div class="skills-ligne">
+                <div>Strength :</div>
+                <div id="strength-less" onclick="subStrength()">-</div>
+                <input name="strength_point" id="strength-point" value="0" readonly/>
+                <div id="strength-more" onclick="addStrength()" class="plus">+</div>
+            </div>
+            <div class="skills-ligne">
+                <div>Armor :</div>
+                <div id="armor-less" onclick="subArmor()">-</div>
+                <input name="armor_point" id="armor-point" value="0" readonly/>
+                <div id="armor-more" onclick="addArmor()" class="plus">+</div>
+            </div>
+            <div class="skills-ligne">
+                <div>Agility :</div>
+                <div id="agility-less" onclick="subAgility()">-</div>
+                <input name="agility_point" id="agility-point" value="0" readonly/>
+                <div id="agility-more" onclick="addAgility()" class="plus">+</div>
+            </div>
+            <br>
+            <div class="skills-ligne"><div>Nickname :</div><div><input name="nickname" id="nickname" type="text"/></div></div>
+            <br>
+            <input type="submit" value="Create robot !"/>
+        </form>
+    </div>    
+</div> 
 </body>
 
 </html>

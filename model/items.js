@@ -1,8 +1,8 @@
 const {con} = require('./connectionBdd')
 
-function getAllNicknames() {
+function getAllItems() {
     return new Promise((result, reject) => {
-        con.query("SELECT nickname FROM robots", (err, data) => {
+        con.query("SELECT * FROM items", (err, data) => {
             if (err) reject(err)
             else result(data)
         })
@@ -51,9 +51,6 @@ function getItemsByRobot(robot){
         })
     })
 }
-
-
-
 
 function getEquippedItemsByType(robot, item_type){
     return new Promise((result, reject) => {
@@ -123,5 +120,6 @@ module.exports = {
     unequipItem,
     equipItem,
     getEquippedItemsByRobot,
-    getItemById
+    getItemById,
+    getAllItems
 }

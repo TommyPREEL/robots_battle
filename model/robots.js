@@ -9,9 +9,10 @@ function getAllNicknames() {
     })
 }
 
-function createRobot(id_user, nickname, strength, armor, agility) {
+function createRobot(id_user, nickname, strength, armor, agility, img) {
+    robot_img = "/robots/robot_"+ img + ".png"
     return new Promise((result, reject) => {
-        con.query("INSERT INTO robots (id_users, nickname, level, experience, money, hp, strength, armor, agility) VALUES (?, ?, 1, 0, 100, 30, ?, ?, ?) ", [id_user, nickname, strength, armor, agility], (err, data) => {
+        con.query(`INSERT INTO robots (id_users, nickname, level, experience, money, hp, strength, armor, agility, img) VALUES (?, ?, 1, 0, 100, 30, ?, ?, ?, ?) `, [id_user, nickname, strength, armor, agility, robot_img], (err, data) => {
             if (err) reject(err)
             else result(data[0])
         })
@@ -47,7 +48,7 @@ function getRobotByUserAndId(id_user, id_robots){
 
 function updateRobot(robot){
     return new Promise((result, reject) => {
-        con.query("UPDATE robots SET nickname = ?, level = ?, experience = ?, money = ?, hp = ?, strength = ?, armor = ?, agility = ? WHERE id_users = ? AND id_robots = ?", [robot.nickname, robot.level, robot.experience, robot.money, robot.hp, robot.strength, robot.armor, robot.agility, robot.id_users, robot.id_robots], (err, data) => {
+        con.query("UPDATE robots SET nickname = ?, level = ?, experience = ?, money = ?, hp = ?, strength = ?, armor = ?, agility = ?, img = ? WHERE id_users = ? AND id_robots = ?", [robot.nickname, robot.level, robot.experience, robot.money, robot.hp, robot.strength, robot.armor, robot.agility, robot.img, robot.id_users, robot.id_robots], (err, data) => {
             if (err) reject(err)
             else result(data[0])
         })
@@ -80,6 +81,24 @@ function updateStatsRobotUnequip(robot, items){
     })
 }
 
+function getRobotByUserAndNickname(id_users, nickname){
+    return new Promise((result, reject) => {
+        con.query("SELECT * FROM robots WHERE id_users = ? AND nickname = ?", [id_users, nickname], (err, data) => {
+            if (err) reject(err)
+            else result(data[0])
+        })
+    })
+}
+
+function buyItem(robot, id_item){
+    return new Promise((result, reject) => {
+        con.query(`INSERT INTO robots_items VALUES (?, ?, ?, 0)`, [robot.id_users, robot.id_robots, id_item], (err, data) => {
+            if (err) reject(err)
+            else result(data[0])
+        })
+    })
+}
+
 module.exports = {
     getAllNicknames,
     createRobot,
@@ -88,5 +107,7 @@ module.exports = {
     getRobotByUserAndId,
     updateRobot,
     updateStatsRobotEquip,
-    updateStatsRobotUnequip
+    updateStatsRobotUnequip,
+    getRobotByUserAndNickname,
+    buyItem
 }

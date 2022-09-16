@@ -13,9 +13,10 @@
     <%- include("header_connected") %>
     <% for( let index=0; index < robots.length; index++ ) { %>
         <div class="skills-ligne">
-                <div>Nickname : <%= robots[index].nickname %></div>
-                <div>Level : <%= robots[index].level %></div>
-                <div><a href="/game/<%= userConnected.id_users %>/<%= selectedRobot %>/fight/<%= robots[index].id_users %>/<%= robots[index].id_robots %>">FIGHT !</a></div>
+            <div><img src="<%= robots[index].img%>"></div>
+            <div>Nickname : <%= robots[index].nickname %></div>
+            <div>Level : <%= robots[index].level %></div>
+            <div><a href="/game/<%= userConnected.id_users %>/<%= selectedRobot %>/fight/<%= robots[index].id_users %>/<%= robots[index].id_robots %>">FIGHT !</a></div>
         </div>
         <% } %>
 

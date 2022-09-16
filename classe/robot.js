@@ -9,8 +9,9 @@ class Robot {
     #strength
     #armor
     #agility
+    #img
 
-    constructor(id_users, id_robots, nickname, level, experience, money, hp, strength, armor, agility) {
+    constructor(id_users, id_robots, nickname, level, experience, money, hp, strength, armor, agility, img) {
         this.#id_users = id_users
         this.#id_robots = id_robots
         this.#nickname = nickname
@@ -21,6 +22,7 @@ class Robot {
         this.#strength = strength
         this.#armor = armor
         this.#agility = agility
+        this.#img = img
     }
     get id_users() {
         return this.#id_users
@@ -52,6 +54,9 @@ class Robot {
     get agility() {
         return this.#agility
     }
+    get img() {
+        return this.#img
+    }
     set nickname(nickname) {
         this.#nickname = nickname
     }
@@ -75,6 +80,9 @@ class Robot {
     }
     set agility(agility) {
         this.#agility = agility
+    }
+    set img(img) {
+        this.#img = img
     }
     fight(enemyRobot){
             let robotHp = this.hp
