@@ -12,8 +12,7 @@
 <body>
 <div class="body">
     <div class="create-robot skill-ligne">
-    <div><h4><a href="/<%= userConnected.id_users %>/create_robot">Create a robot</a></h4></div>
-    <br/><br/><br/>
+        <h4><span class="selectrobot">Select your robot !</span></h4><br>
     <% for( let index=0; index < robots.length; index++ ) { %>
         <div class="skills-ligne selectrobot">
             <a href="/game/<%= robots[index].id_users %>/<%= robots[index].id_robots %>">
@@ -29,6 +28,9 @@
             </a>
         </div>
         <% } %>
+        <br><div><h4><a class="logout selectrobot"  href="/<%= userConnected.id_users %>/create_robot"><span class="material-symbols-outlined">
+            add
+            </span>Create a robot</a></h4></div>
     </div>
 </div>
 </body>

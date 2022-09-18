@@ -9,24 +9,6 @@ function getAllItems() {
     })
 }
 
-function createRobot(id_user, nickname, strength, armor, agility) {
-    return new Promise((result, reject) => {
-        con.query("INSERT INTO robots (id_users, nickname, level, experience, money, hp, strength, armor, agility) VALUES (?, ?, 1, 0, 100, 30, ?, ?, ?) ", [id_user, nickname, strength, armor, agility], (err, data) => {
-            if (err) reject(err)
-            else result(data[0])
-        })
-    })
-}
-
-function getRobotsByUser(id_user) {
-    return new Promise((result, reject) => {
-        con.query("SELECT * FROM robots WHERE id_users = ?", [id_user], (err, data) => {
-            if (err) reject(err)
-            else result(data)
-        })
-    })
-}
-
 function getItemById(id_items) {
     return new Promise((result, reject) => {
         con.query("SELECT * FROM items WHERE id_items = ?", [id_items], (err, data) => {
@@ -97,17 +79,6 @@ function unequipItem(robot, id_item){
 function equipItem(robot, id_item){
     return new Promise((result, reject) => {
         con.query("UPDATE robots_items SET isEquipped = 1 WHERE id_users = ? AND id_robots = ? AND id_items = ?", [robot.id_users, robot.id_robots, id_item], (err, data) => {
-            if (err) reject(err)
-            else result(data[0])
-        })
-    })
-}
-
-
-
-function updateRobot(robot){
-    return new Promise((result, reject) => {
-        con.query("UPDATE robots SET nickname = ?, level = ?, experience = ?, money = ?, hp = ?, strength = ?, armor = ?, agility = ? WHERE id_1 = ? AND id = ?", [robot.nickname, robot.level, robot.experience, robot.money, robot.hp, robot.strength, robot.armor, robot.agility, robot.id_1, robot.id], (err, data) => {
             if (err) reject(err)
             else result(data[0])
         })

@@ -288,6 +288,24 @@ body a {
 }
 
 .selectrobot a{
+    background-color: #302b63;
+    margin:10px;
+    padding:10px;
+}
+
+.profil-robot{
+    background-color: #302b63;
+    padding:10px;
+    text-align: center;
+    align-items: center;
+}
+
+.background-purple{
+    background-color: #302b63;
+    padding:10px;
+}
+
+.selectrobot a{
     text-align: center;
 }
 

@@ -4,7 +4,7 @@ con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "robots_battle_v2",
+    database: "robots_battle",
     port: 3306
 })
 /*

@@ -20,23 +20,29 @@
                 
 
                 <% if(typeof robot !="undefined") { %>
-                <a href="/game/<%= userConnected.id_users %>/<%= robot.id_robots %>">Robot: <%= robot.nickname%></a>
+                <a class="logout" href="/game/<%= userConnected.id_users %>/<%= robot.id_robots %>"><span class="material-symbols-outlined">
+                    person
+                    </span>Robot: <%= robot.nickname%></a>
                 <% }%>
 
                 <a class="change-robot" href="/<%= userConnected.id_users %>/select_robot"><span class="material-symbols-outlined">
                     group
                     </span>Change robots</a>
                 <% if(typeof robot !="undefined") { %>
-                    <a href="/game/<%= userConnected.id_users %>/<%= robot.id_robots %>/arena">Arena !</a>
+                    <a class="logout" href="/game/<%= userConnected.id_users %>/<%= robot.id_robots %>/arena"><span class="material-symbols-outlined">
+                        construction
+                        </span>Arena !</a>
                 <% }%>
 
                 <% if(typeof robot !="undefined") { %>
-                    <a href="/game/<%= userConnected.id_users %>/<%= robot.id_robots %>/shops">Shop</a>
+                    <a class="logout" href="/game/<%= userConnected.id_users %>/<%= robot.id_robots %>/shops"><span class="material-symbols-outlined">
+                        storefront
+                        </span>Shop</a>
                 <% }%>
 
-                <a href="/logout" class="logout">Logout<span class="material-symbols-outlined">
+                <a href="/logout" class="logout"><span class="material-symbols-outlined">
                     logout
-                    </span></a>
+                    </span>Logout</a>
             </h2>
             </nav>
         </header>

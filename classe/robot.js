@@ -98,7 +98,7 @@ class Robot {
             while((this.hp > 0) && (enemyRobot.hp > 0) && (count<=60)){
                 if(robotTurn){
                     dodge = false
-                    message += "Your Turn<br>"
+                    message += "<br>Your Turn<br>"
                     tabDodge.splice(0, tabDodge.length)
                     for(let i=0; i<enemyRobot.agility; i++){
                         random = this.getRandomIntInclusive(1,100)
@@ -119,13 +119,16 @@ class Robot {
                     else{
                         if(enemyRobot.armor < this.strength){
                             enemyRobot.hp -= ((+this.strength)-(+enemyRobot.armor))
-                            message += "Enemy robot lose " + ((+this.strength)-(+enemyRobot.armor)) + " HP<br>"
-                            message += "Enemy robot has " + enemyRobot.hp +" HP<br>"
+                            message += "Enemy robot lose " + ((+this.strength)-(+enemyRobot.armor)) + " HP, enemy robot has " + enemyRobot.hp +" HP<br>"
+                        }else{
+                            if(enemyRobot.armor >= this.strength){
+                                message += "Enemy robot has too much armor !<br>"
+                            }
                         }
                     }
                 }
                 else{
-                    message += "Enemy Turn<br>"
+                    message += "<br>Enemy Turn<br>"
                     dodge = false
                     tabDodge.splice(0, tabDodge.length)
                     random = 0;
@@ -148,30 +151,40 @@ class Robot {
                     else{
                         if(this.armor < enemyRobot.strength){
                             this.hp -= ((+enemyRobot.strength)-(+this.armor))
-                            message += "Your robot lose " + ((+enemyRobot.strength)-(+this.armor)) + " HP<br>"
-                            message += "Your robot has " + this.hp +" HP<br>"
+                            message += "Your robot lose " + ((+enemyRobot.strength)-(+this.armor)) + " HP, your robot has " + this.hp +" HP<br>"
+                        }else{
+                            if(this.armor >= enemyRobot.strength){
+                                message += "Your robot has too much armor !<br>"
+                            }
                         }
                     }
                 }
                 if(enemyRobot.hp <=0){
-                    message += "You win !<br>"
+                    message += "<br>You win !<br>"
                     balance = Math.ceil(enemyRobot.money/10)
                     this.money += balance;
                     enemyRobot.money -= balance;
                     experience = 100
                     this.experience += experience;
-                    message += "You earn " + balance + " gold and " + experience + " experience point !";
+                    message += "<br>You earn " + balance + " gold and " + experience + " experience point !";
                 }
                 else{
                     if(this.hp <=0){
-                        message += "You lose..<br>"
+                        message += "<br>You lose..<br>"
                         balance = Math.ceil(this.money/10)
                         this.money -= balance;
                         enemyRobot.money += balance;
                         experience = 50
                         enemyRobot.experience += experience;
                         this.experience += experience;
-                        message += "You lose " + balance + " gold and you earn " + experience + " experience point";
+                        message += "<br>You lose " + balance + " gold but you earn " + experience + " experience point";
+                    }else{
+                        if(count==60 && this.hp >0 && enemyRobot.hp >0){
+                            experience = 50
+                            enemyRobot.experience += experience;
+                            this.experience += experience;
+                            message += "<br>End of the match. It's a draw.. You earn " + experience + " experience point !";
+                        }
                     }
                 }
                 robotTurn = !robotTurn;

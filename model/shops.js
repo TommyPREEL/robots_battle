@@ -55,16 +55,6 @@ function getShopById(id_shops){
 }
 
 function getItemsInShop(shop){
-    /*
-    SELECT * 
-        FROM items
-        WHERE items.id_items NOT IN ( SELECT items.id_items
-            FROM items
-            JOIN shops_items ON shops_items.id_items = items.id_items
-            JOIN shops ON shops_items.id_shops = shops_items.id_shops
-            JOIN robots_items ON robots_items.id_items = items.id_items
-            WHERE shops.id_shops = ?)
-    */
     return new Promise((result, reject) => {
         con.query(`
         SELECT DISTINCT items.id_items, items.name, items.type, items.modStr, items.modArm, items.modAgi, items.modHP, items.img, items.price
