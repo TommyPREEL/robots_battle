@@ -12,19 +12,26 @@
     </head>
 
     <body> <!--(<//%= playerRobot.id_1 %>, <//%= playerRobot.id %>, <//%= enemyPlayerRobot.id_1 %>, <//%= enemyPlayerRobot.id_1 %>)-->
-        <div class="skills-ligne">
-            <img src="<%= playerRobot.img%>">
-            <%= playerRobot.nickname%>
-        </div>
-        <div class="skills-ligne">
-            FIGHT !!!
-            <br>
-            <br>
-            <%- combat %>
-        </div>
-        <div class="skills-ligne">
-            <img src="<%= enemyPlayerRobot.img%>">
-            <%= enemyPlayerRobot.nickname%>
+        <div class="body">    
+            <div class="shop skill-ligne">
+                <div class="flex-fight">
+                    <div class="skills-ligne">
+                        <img src="<%= playerRobot.img%>" class="imgrobot">
+                        <%= playerRobot.nickname%>
+                    </div>
+                    <div class="skills-ligne">
+                        FIGHT !!!
+                        <br>
+                        <br>
+                        <%- combat %>
+                    </div>
+                    <div class="skills-ligne">
+                        <img class="imgrobot" src="<%= enemyPlayerRobot.img%>">
+                        <%= enemyPlayerRobot.nickname%>
+                    
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

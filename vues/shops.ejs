@@ -11,39 +11,39 @@
 
 <body>
     <%- include("header_connected") %>
-    
-    <div class="skills-ligne">
-    Shops
-    <% for(let index=0; index < shops.length; index++) { %>
-            <% if((shops[index].name == "The Fireball") && (robot.level >= 0)) { %>
-                <a href="/game/<%= shops[index].id_users %>/<%= shops[index].id_robots %>/shops/<%= shops[index].id_shops %>">
-                <div class="img-shop-unlock-1"><img class="img-shop-unlock" src="<%= shops[index].img %>"></div>
-            </a>
-            <% } else if(shops[index].name == "The Fireball"){ %>
-                <div class="img-shop-lock-1"><img class="img-shop-lock" src="<%= shops[index].img %>"></div>
-            <% } %>
+    <div class="body">    
+        <div class="shop skill-ligne">
+            <h4>Shops</h4>
+            <div class="shop-ligne">
+                <% for(let index=0; index < shops.length; index++) { %>
+                        <% if((shops[index].name == "The Fireball") && (robot.level >= 0)) { %>
+                            <a href="/game/<%= shops[index].id_users %>/<%= shops[index].id_robots %>/shops/<%= shops[index].id_shops %>">
+                            <div class="img-shop-unlock-1"><img class="img-shop-unlock" src="<%= shops[index].img %>"></div>
+                            </a>
+                        <% } else if(shops[index].name == "The Fireball"){ %>
+                            <div class="img-shop-lock-1"><img class="img-shop-lock" src="<%= shops[index].img %>"></div>
+                        <% } %>
+                        <% if((shops[index].name == "The Equinox") && (robot.level >= 3)) { %>
+                            <a href="/game/<%= shops[index].id_users %>/<%= shops[index].id_robots %>/shops/<%= shops[index].id_shops %>">
+                            <a class="img-shop-unlock-2"><img class="img-shop-unlock" src="<%= shops[index].img %>"></a>
+                        </a>
+                        <% } else if(shops[index].name == "The Equinox"){ %>
+                            <div class="img-shop-lock-2"><img class="img-shop-lock" src="<%= shops[index].img %>"></div>
+                        <% } %>
 
 
 
-            <% if((shops[index].name == "The Equinox") && (robot.level >= 3)) { %>
-                <a href="/game/<%= shops[index].id_users %>/<%= shops[index].id_robots %>/shops/<%= shops[index].id_shops %>">
-                <a class="img-shop-unlock-2"><img class="img-shop-unlock" src="<%= shops[index].img %>"></a>
-            </a>
-            <% } else if(shops[index].name == "The Equinox"){ %>
-                <div class="img-shop-lock-2"><img class="img-shop-lock" src="<%= shops[index].img %>"></div>
-            <% } %>
-
-
-
-            <% if((shops[index].name == "Runes and Rods") && (robot.level >= 5)) { %>
-                <a href="/game/<%= shops[index].id_users %>/<%= shops[index].id_robots %>/shops/<%= shops[index].id_shops %>">
-                <div class="img-shop-unlock-3"><img class="img-shop-unlock" src="<%= shops[index].img %>">
-            </a>
-            <% } else if(shops[index].name == "Runes and Rods"){ %>
-                <div class="img-shop-lock-3"><img class="img-shop-lock" src="<%= shops[index].img %>"></div>
-            <% } %>
-    <% } %>
-</div>
+                        <% if((shops[index].name == "Runes and Rods") && (robot.level >= 5)) { %>
+                            <a href="/game/<%= shops[index].id_users %>/<%= shops[index].id_robots %>/shops/<%= shops[index].id_shops %>">
+                            <div class="img-shop-unlock-3"><img class="img-shop-unlock" src="<%= shops[index].img %>">
+                        </a>
+                        <% } else if(shops[index].name == "Runes and Rods"){ %>
+                            <div class="img-shop-lock-3"><img class="img-shop-lock" src="<%= shops[index].img %>"></div>
+                        <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

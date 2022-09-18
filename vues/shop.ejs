@@ -11,17 +11,18 @@
 
 <body>
     <%- include("header_connected") %>
-
-
-
+    <div class="body">    
+        <div class="create-robot skill-ligne">
+            <h4>Equipments to buy</h4>
             <div class="skills-ligne">
-                Equipments to buy
                 <% for(let index=0; index < items.length; index++) { %>
                             <div class="item"><a href="/game/<%= robot.id_users %>/<%= robot.id_robots %>/shops/buy/<%= shop.id_shops %>/<%= items[index].id_items %>">
                             <img class="img-bag" src="<%= items[index].img %>">
                         </a></div>
                         Price : <%= items[index].price %>
                 <% } %>
+            </div>
+        </div>
 
 </body>
 

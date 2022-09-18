@@ -15,7 +15,9 @@
 
 body {
     font-family: Roboto;
-	background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/05/Purple-and-Blue-Abstract-Squares-Gradient-Desktop-Backgrounds.jpg');
+	/*
+	background-image: url(/*'https://www.pixelstalk.net/wp-content/uploads/2016/05/Purple-and-Blue-Abstract-Squares-Gradient-Desktop-Backgrounds.jpg')*/
+	background-image: url('https://wallpapercrafter.com/sizes/1920x1080/138538-face-robot-science-fiction-artwork-futuristic.jpg');
 	background-size: cover;
 }
 .body {
@@ -37,7 +39,7 @@ body {
 	align-items: center;
 	justify-content: space-between;
 	background: linear-gradient(30deg,#31154B,#161432,#23305A, #3E3C49,#4B4031);
-	width: 98%;
+	width: 99%;
 }
 
 .main .links h2 a {

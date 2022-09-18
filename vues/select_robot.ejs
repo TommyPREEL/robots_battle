@@ -13,16 +13,20 @@
 <div class="body">
     <div class="create-robot skill-ligne">
     <div><h4><a href="/<%= userConnected.id_users %>/create_robot">Create a robot</a></h4></div>
+    <br/><br/><br/>
     <% for( let index=0; index < robots.length; index++ ) { %>
-        <div class="skills-ligne selectrobot"><a href="/game/<%= robots[index].id_users %>/<%= robots[index].id_robots %>">
-                <div><img src="<%= robots[index].img %>" class="imgrobot"></div>
-                <div><%= robots[index].nickname %></div>
-                <div>Nickname : <%= robots[index].nickname %></div>
-                <div>Level : <%= robots[index].level %></div>
-                <div>Experience : <%= robots[index].experience %></div>
-                <div>Strength : <%= robots[index].strength %></div>
-                <div>Armor : <%= robots[index].armor %></div>
-                <div>Agility : <%= robots[index].agility %></div>
+        <div class="skills-ligne selectrobot">
+            <a href="/game/<%= robots[index].id_users %>/<%= robots[index].id_robots %>">
+                <img src="<%= robots[index].img %>" class="imgrobot">
+            
+                <div class="title"><%= robots[index].nickname %></div>
+                <div><strong>Nickname</strong> : <%= robots[index].nickname %></div>
+                <div><strong>Level</strong> : <%= robots[index].level %></div>
+                <div><strong>Experience</strong> : <%= robots[index].experience %></div>
+                <div><strong>Strength</strong> : <%= robots[index].strength %></div>
+                <div><strong>Armor</strong> : <%= robots[index].armor %></div>
+                <div><strong>Agility</strong> : <%= robots[index].agility %></div>
+            </a>
         </div>
         <% } %>
     </div>

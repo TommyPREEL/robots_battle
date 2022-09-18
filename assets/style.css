@@ -1,5 +1,45 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn,ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 body {
-    font-family: Roboto;
+    font-family: Roboto
 }
 body a {
     text-decoration: none;
@@ -43,9 +83,62 @@ body a {
 
 .skills-ligne {
     display: flex;
+    margin: auto;
     margin: 5%;
     justify-content: space-between;
     align-items: center;
+}
+
+.my-bag{
+    display: flex;
+    align-items: center;
+    width: 450px;
+}
+
+.shop-ligne {
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    margin-top: 5%;
+}
+
+.flex-arena {
+    justify-content: space-between!important;
+    align-items: center;
+    width: 70%;
+    margin: auto;
+    margin-top: 3%;
+    text-align: center;
+}
+
+.flex-arena div img{
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.648);
+    padding: 10px;
+
+    width: 50px;
+    height: 50px;
+}
+
+.flex-arena div a {
+    background-color: rgba(255, 255, 255, 0.648);
+    border-radius: 5px;
+    padding: 10px 25px 10px 25px;   
+}
+
+.robot-display img {
+    width: 100px;
+    display: block;
+    margin: auto;
+}
+
+.robot-display {
+    width: 400px;
+    margin: auto;
+    color: #b2b8c9;
 }
 
 .skills-ligne input {
@@ -70,29 +163,31 @@ body a {
     background-color:black;
     max-width:50px;
     max-height: 50px;
+    text-align: center;
 }
-.item-weapon{
-    background-color:black;
-    width:50px;
+
+.items-equiped, .items-bag {
+    display: flex;
+    width: 200px!important;
+}
+
+.item-weapon, .item-shield, .item-wear, .bag-item {
+    width: 50px;
     height: 50px;
+    text-align: center;
+    background-color: black;
+    margin: 5px;
+    display: flex;
+    align-items: center;
 }
-.item-shield{
-    background-color:black;
-    width:50px;
-    height: 50px;
-}
-.item-wear{
-    background-color:black;
-    width:50px;
-    height: 50px;
-}
-.img-bag{
-    max-width:50px;
-    max-height: 50px;
-}
-.img-equipped{
-    max-width:50px;
-    max-height: 50px;
+
+.img-bag, .img-equipped{
+    max-width:40px;
+    max-height: 40px;
+    display: block;
+    margin: auto;
+    margin: 5px;
+    text-align: center;
 }
 .img-bag-lock{
     max-width: 200px;
@@ -104,18 +199,21 @@ body a {
     max-height: 200px;
 }
 .img-shop-lock{
-    max-width: 200px;
-    max-height: 200px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
     filter: grayscale(1);
 }
 .img-shop-unlock{
-    max-width: 200px;
-    max-height: 200px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }
 .img-shop-lock-1::after{
     content: 'Locked until level 0';
     position: absolute;
-    background-color:white;
+    background-color:white; 
+    color: black!important;
     z-index:1;
     display:flex;
     text-align: center;
@@ -123,72 +221,21 @@ body a {
     align-items: center;
     margin: 40px;
 }
-.img-shop-lock-2::before{
+.img-shop-lock-2::before, .img-shop-lock-3::before{
     content: 'Locked until level 3';
     position: absolute;
-    background-color:white;
+    background-color:rgba(84, 81, 81, 0.75);
+    padding: 3px;
     z-index:1;
     display:flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin: 40px;
+    margin: 30px;
+    margin-top: 80px;
+}
+.img-shop-lock-2::before {
+    content: 'Locked until level 3';
 }
 .img-shop-lock-3::before{
     content: 'Locked until level 5';
-    position: absolute;
-    background-color:white;
-    z-index:1;
-    display:flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin: 40px;
-}
-
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn,ins, kbd, q, s, samp,
-small, strike, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
 }
 
 .imgrobot {
@@ -196,7 +243,7 @@ table {
     height: 100px;
     object-fit: cover;
 }
-.create-robot {
+.create-robot, .arena, .shop {
 	position:relative;
 	margin: auto;
 	margin-top: 5%;
@@ -205,11 +252,33 @@ table {
 }
 
 .selectrobot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: auto;
-    max-width: 400px;
+    color: #b2b8c9!important;
+    width: 400px;
 }
 
-.create-robot h4 {
+.selectrobot .title {
+    font-family : 'Open Sans';
+    font-size: 1.2rem;
+    font-style: italic;
+    text-align: center;
+    margin: 5px;
+}
+
+.selectrobot div {
+    letter-spacing: 1px;;
+}
+.selectrobot div strong {
+    font-family: 'Roboto';
+    font-weight: lighter!important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.create-robot h4, .arena h4, .shop h4 {
 	text-align: center;
 	font-size: 1.5rem;
 }
@@ -218,12 +287,22 @@ table {
     color: rgba(255, 255, 255, 0.648)!important;
 }
 
-.selectrobot {
-    display: flex;
-    justify-content: space-between;
+.selectrobot a{
+    text-align: center;
+}
+
+.selectrobot a div {
+    color: rgb(156, 156, 156);
+    text-align: justify;
 }
 .selectrobot .imgrobot {
     display: block;
     margin: auto;
     text-align:center;
+}
+.flex-fight{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }

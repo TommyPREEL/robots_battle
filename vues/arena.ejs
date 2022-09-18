@@ -11,14 +11,19 @@
 
     <body>
     <%- include("header_connected") %>
-    <% for( let index=0; index < robots.length; index++ ) { %>
-        <div class="skills-ligne">
-            <div><img src="<%= robots[index].img%>"></div>
-            <div>Nickname : <%= robots[index].nickname %></div>
-            <div>Level : <%= robots[index].level %></div>
-            <div><a href="/game/<%= userConnected.id_users %>/<%= selectedRobot %>/fight/<%= robots[index].id_users %>/<%= robots[index].id_robots %>">FIGHT !</a></div>
+        <div class="body">
+            <div class="arena skill-ligne">
+                <div><h4>Arena</h4></div>
+                <br/>
+                <% for( let index=0; index < robots.length; index++ ) { %>
+                    <div class="skills-ligne flex-arena">
+                        <div><img src="<%= robots[index].img%>" class="imgrobot"></div>
+                        <div>Nickname : <%= robots[index].nickname %></div>
+                        <div>Level : <%= robots[index].level %></div>
+                        <div><a href="/game/<%= userConnected.id_users %>/<%= selectedRobot %>/fight/<%= robots[index].id_users %>/<%= robots[index].id_robots %>">FIGHT !</a></div>
+                    </div>
+                <% } %>
+            </div>
         </div>
-        <% } %>
-
     </body>
 </html>

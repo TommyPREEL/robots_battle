@@ -1,4 +1,4 @@
-const {con} = require('./connectionBdd')
+const {con} = require('./connectionDb')
 
 function createShop1(id_user, id_robots){
     return new Promise((result, reject) => {

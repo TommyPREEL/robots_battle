@@ -4,14 +4,20 @@ const User = require('./classe/user')
 const Robot = require('./classe/robot')
 const Item = require('./classe/item')
 const Shop = require('./classe/shop')
+
 const { connectUser, createUser } = require("./model/users")
-const bodyParser = require('body-parser'); // Middleware
+//const bodyParser = require('body-parser'); // Middleware
 var session = require('express-session');
-const { createPoolCluster } = require('mysql2');
+//const { createPoolCluster } = require('mysql2');
 const { getAllNicknames, createRobot, getRobotsByUser, getAllRobotsExceptUser, getRobotByUserAndId, updateRobot, updateStatsRobotEquip, updateStatsRobotUnequip, getRobotByUserAndNickname, buyItem} = require('./model/robots');
 const { getItemsByRobot, getEquippedItemsByType, equipItem, unequipItem, getEquippedItemsByRobot, getItemById, getAllItems} = require('./model/items');
 const { createShop1, createShop2, createShop3, getShopsByIdUserAndIdRobot, getShopById, getItemsInShop, buyItemUpdateShop, createItemsInShop} = require('./model/shops');
 const { redirect } = require('express-cookie/lib/response');
+/*const db = require('./model/connectionDb')
+const con = db.getCon();*/
+
+/*const Database = require('./classe/database')
+let db = new Database();*/
 
 
 const app = express()

@@ -1,4 +1,4 @@
-const {con} = require('./connectionBdd')
+const {con} = require('./connectionDb')
 
 function connectUser(mail, pwd) {
     return new Promise((result, reject) => {

@@ -11,62 +11,74 @@
 
 <body>
     <%- include("header_connected") %>
+    <div class="body">
+        <div class="create-robot skill-ligne">
     <!--<a href="/game/<%= robot.id_users %>/<%= robot.id_robots %>/"></a>-->
 
-        <div class="skills-ligne">
-            <div><img src="<%= robot.img %>"></div>
-            <div>Nickname : <%= robot.nickname %></div>
-            <div>Level : <%= robot.level %></div>
-            <div>Experience : <%= robot.experience %></div>
-            <div>Money : <%= robot.money %></div>
-            <div>HP : <%= robot.hp %> (<%= updateStats.hp %>)</div>
-            <div>Strength : <%= robot.strength %> (<%= updateStats.strength %>)</div>
-            <div>Armor : <%= robot.armor %> (<%= updateStats.armor %>)</div>
-            <div>Agility : <%= robot.agility %> (<%= updateStats.agility %>)</div>
+            <div class="skills-ligne selectrobot">
+                <div>
+                    <img src="<%= robot.img %>" class="imgrobot">
+                    <div><strong>Nickname</strong> : <%= robot.nickname %></div>
+                    <div><strong>Level</strong> : <%= robot.level %></div>
+                    <div><strong>Experience</strong> : <%= robot.experience %></div>
+                    <div><strong>Money</strong> : <%= robot.money %></div>
+                    <div><strong>HP</strong> : <%= robot.hp %> (<%= updateStats.hp %>)</div>
+                    <div><strong>Strength</strong> : <%= robot.strength %> (<%= updateStats.strength %>)</div>
+                    <div><strong>Armor</strong> : <%= robot.armor %> (<%= updateStats.armor %>)</div>
+                    <div><strong>Agility</strong> : <%= robot.agility %> (<%= updateStats.agility %>)</div>
+
+                </div>
+            </div>
+
+            <div class="skills-ligne">
+                Equipments
+                
+                <div class="items-equiped">
+                    <div id="item-weapon" class="item-weapon">
+                        <% for( let index=0; index < items.length; index++ ) { %>
+                            <a href="/game/<%= robot.id_users %>/<%= robot.id_robots %>/unequip/<%= items[index].id_items %>/<%= items[index].type %>">
+                            <% if(items[index].isEquipped == 1 && items[index].type == "weapon") { %>
+                                <img class="img-equipped" src="<%= items[index].img %>">
+                            <% } %> 
+                            </a>
+                        <% } %>
+                    </div>
+                    <div id="item-shield" class="item-shield">
+                        <% for( let index=0; index < items.length; index++ ) { %>
+                            <a href="/game/<%= robot.id_users %>/<%= robot.id_robots %>/unequip/<%= items[index].id_items %>/<%= items[index].type %>">
+                            <% if(items[index].isEquipped == 1 && items[index].type == "shield") { %>
+                                <img class="img-equipped" src="<%= items[index].img %>">
+                            <% } %>
+                            </a>
+                        <% } %>
+                    </div>
+
+                    <div id="item-wear" class="item-wear">
+                        <% for( let index=0; index < items.length; index++ ) { %>
+                            <a href="/game/<%= robot.id_users %>/<%= robot.id_robots %>/unequip/<%= items[index].id_items %>/<%= items[index].type %>">
+                            <% if(items[index].isEquipped == 1 && items[index].type == "wear") { %>
+                                <img class="img-equipped" src="<%= items[index].img %>">
+                            <% } %>
+                            </a>
+                        <% } %>
+                    </div>
+            </div>
+
+            <div class="my-bag">
+                Bag
+                <div class="items-bag">
+                    <% for(let index=0; index < items.length; index++) { %>
+                            <% if(items[index].isEquipped == 0) { %>
+                                <div class="item bag-item"><a href="/game/<%= robot.id_users %>/<%= robot.id_robots %>/equip/<%= items[index].id_items %>/<%= items[index].type %>">
+                                <img class="img-bag" src="<%= items[index].img %>">
+                            </a></div>
+                            <% } %>
+                    <% } %>     
+                </div>
+             
+            </div>
         </div>
-
-        <div class="skills-ligne">
-            Equipments
-            <div id="item-weapon" class="item-weapon">
-                <% for( let index=0; index < items.length; index++ ) { %>
-                    <a href="/game/<%= robot.id_users %>/<%= robot.id_robots %>/unequip/<%= items[index].id_items %>/<%= items[index].type %>">
-                    <% if(items[index].isEquipped == 1 && items[index].type == "weapon") { %>
-                        <img class="img-equipped" src="<%= items[index].img %>">
-                    <% } %>
-                    </a>
-                <% } %>
-            </div>
-
-            <div id="item-shield" class="item-shield">
-                <% for( let index=0; index < items.length; index++ ) { %>
-                    <a href="/game/<%= robot.id_users %>/<%= robot.id_robots %>/unequip/<%= items[index].id_items %>/<%= items[index].type %>">
-                    <% if(items[index].isEquipped == 1 && items[index].type == "shield") { %>
-                        <img class="img-equipped" src="<%= items[index].img %>">
-                    <% } %>
-                    </a>
-                <% } %>
-            </div>
-
-            <div id="item-wear" class="item-wear">
-                <% for( let index=0; index < items.length; index++ ) { %>
-                    <a href="/game/<%= robot.id_users %>/<%= robot.id_robots %>/unequip/<%= items[index].id_items %>/<%= items[index].type %>">
-                    <% if(items[index].isEquipped == 1 && items[index].type == "wear") { %>
-                        <img class="img-equipped" src="<%= items[index].img %>">
-                    <% } %>
-                    </a>
-                <% } %>
-            </div>
-        </div>
-
-        <div class="skills-ligne">
-            Bag
-            <% for(let index=0; index < items.length; index++) { %>
-                    <% if(items[index].isEquipped == 0) { %>
-                        <div class="item"><a href="/game/<%= robot.id_users %>/<%= robot.id_robots %>/equip/<%= items[index].id_items %>/<%= items[index].type %>">
-                        <img class="img-bag" src="<%= items[index].img %>">
-                    </a></div>
-                    <% } %>
-            <% } %>
+    </div>
 
 </body>
 
