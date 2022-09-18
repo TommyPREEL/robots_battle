@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 18 sep. 2022 à 21:20
+-- Généré le : dim. 18 sep. 2022 à 21:33
 -- Version du serveur : 5.7.36
 -- Version de PHP : 8.1.0
 
@@ -81,20 +81,12 @@ CREATE TABLE IF NOT EXISTS `robots` (
 --
 
 INSERT INTO `robots` (`id_users`, `id_robots`, `nickname`, `level`, `experience`, `money`, `hp`, `strength`, `armor`, `agility`, `img`) VALUES
-(1, 1, 'robot a', 1, 1750, 332, 30, 10, 0, 0, ''),
-(2, 1, 'robot z', 1, 250, 53, 30, 5, 4, 1, ''),
-(1, 2, 'test shop', 1, 450, 3078, 30, 8, 1, 1, ''),
-(3, 1, 'a', 1, 3350, 81, 30, 4, 5, 1, ''),
-(1, 3, 'test create', 1, 100, 7, 35, 4, 1, -1, ''),
-(2, 2, 'test img', 1, 150, 368, 45, 8, 6, -1, '/robots/robot_3.png'),
-(1, 4, 'blop', 1, 0, 90, 30, 10, 0, 0, '/robots/robot_3.png'),
-(1, 5, 'ttttest', 1, 400, 31, 35, 14, 3, -2, '/robots/robot_5.png'),
-(4, 1, 'test robot zzz', 1, 150, 19, 35, 13, 3, -1, '/robots/robot_5.png'),
-(5, 1, 'test @', 1, 100, 77, 30, 10, 0, 0, '/robots/robot_3.png'),
-(6, 1, 'Cloclo', 3, 700, 331, 30, 5, 3, 3, '/robots/robot_2.png'),
-(7, 1, 'MegaMelo', 1, 500, 109, 30, 5, 5, 0, '/robots/robot_1.png'),
-(7, 2, '132456654849', 1, 50, 107, 30, 10, 0, 0, '/robots/robot_4.png'),
-(8, 1, 'Nicolas', 1, 5650, 100, 30, 5, 4, 1, '/robots/robot_5.png');
+(9, 1, 'test bad robot', 1, 0, 100, 30, 0, 0, 0, '/robots/robot_2.png'),
+(9, 2, 'test strength', 1, 0, 100, 30, 20, 0, 0, '/robots/robot_1.png'),
+(9, 3, 'test armor', 1, 0, 100, 30, 0, 20, 0, '/robots/robot_3.png'),
+(9, 4, 'test agility', 1, 0, 100, 30, 0, 0, 80, '/robots/robot_4.png'),
+(9, 5, 'test money', 1, 0, 10000, 30, 0, 0, 0, '/robots/robot_3.png'),
+(9, 6, 'test all strong', 1, 0, 100, 30, 20, 20, 80, '/robots/robot_5.png');
 
 -- --------------------------------------------------------
 
@@ -112,39 +104,6 @@ CREATE TABLE IF NOT EXISTS `robots_items` (
   KEY `id_items` (`id_items`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Déchargement des données de la table `robots_items`
---
-
-INSERT INTO `robots_items` (`id_users`, `id_robots`, `id_items`, `isEquipped`) VALUES
-(1, 2, 1, 0),
-(1, 2, 3, 0),
-(1, 2, 4, 0),
-(1, 2, 2, 0),
-(1, 3, 1, 1),
-(1, 3, 4, 1),
-(1, 3, 2, 0),
-(2, 2, 7, 1),
-(2, 2, 1, 1),
-(2, 2, 2, 0),
-(1, 5, 3, 1),
-(1, 5, 1, 1),
-(4, 1, 1, 1),
-(4, 1, 3, 1),
-(6, 1, 3, 0),
-(6, 1, 4, 0),
-(6, 1, 7, 0),
-(6, 1, 5, 0),
-(6, 1, 2, 0),
-(6, 1, 1, 0),
-(5, 1, 3, 0),
-(8, 1, 3, 0),
-(8, 1, 1, 0),
-(8, 1, 2, 0),
-(8, 1, 4, 0),
-(8, 1, 5, 0),
-(8, 1, 7, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -160,49 +119,31 @@ CREATE TABLE IF NOT EXISTS `shops` (
   `img` varchar(200) NOT NULL,
   PRIMARY KEY (`id_shops`),
   KEY `id_users` (`id_users`,`id_robots`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `shops`
 --
 
 INSERT INTO `shops` (`id_shops`, `name`, `id_users`, `id_robots`, `img`) VALUES
-(1, 'The Fireball', 1, 2, '/shops/the_fireball.png'),
-(2, 'The Equinox', 1, 2, '/shops/the_equinox.jpg'),
-(3, 'Runes and Rods', 1, 2, '/shops/runes_and_rods.jpeg'),
-(4, 'The Fireball', 1, 3, '/shops/the_fireball.png'),
-(5, 'The Equinox', 1, 3, '/shops/the_equinox.jpg'),
-(6, 'Runes and Rods', 1, 3, '/shops/runes_and_rods.jpeg'),
-(7, 'The Fireball', 2, 2, '/shops/the_fireball.png'),
-(8, 'The Equinox', 2, 2, '/shops/the_equinox.jpg'),
-(9, 'Runes and Rods', 2, 2, '/shops/runes_and_rods.jpeg'),
-(10, 'The Fireball', 2, 2, '/shops/the_fireball.png'),
-(11, 'The Equinox', 2, 2, '/shops/the_equinox.jpg'),
-(12, 'Runes and Rods', 2, 2, '/shops/runes_and_rods.jpeg'),
-(13, 'The Fireball', 1, 4, '/shops/the_fireball.png'),
-(14, 'The Equinox', 1, 4, '/shops/the_equinox.jpg'),
-(15, 'Runes and Rods', 1, 4, '/shops/runes_and_rods.jpeg'),
-(16, 'The Fireball', 1, 5, '/shops/the_fireball.png'),
-(17, 'The Equinox', 1, 5, '/shops/the_equinox.jpg'),
-(18, 'Runes and Rods', 1, 5, '/shops/runes_and_rods.jpeg'),
-(19, 'The Fireball', 4, 1, '/shops/the_fireball.png'),
-(20, 'The Equinox', 4, 1, '/shops/the_equinox.jpg'),
-(21, 'Runes and Rods', 4, 1, '/shops/runes_and_rods.jpeg'),
-(22, 'The Fireball', 5, 1, '/shops/the_fireball.png'),
-(23, 'The Equinox', 5, 1, '/shops/the_equinox.jpg'),
-(24, 'Runes and Rods', 5, 1, '/shops/runes_and_rods.jpeg'),
-(25, 'The Fireball', 6, 1, '/shops/the_fireball.png'),
-(26, 'The Equinox', 6, 1, '/shops/the_equinox.jpg'),
-(27, 'Runes and Rods', 6, 1, '/shops/runes_and_rods.jpeg'),
-(28, 'The Fireball', 7, 1, '/shops/the_fireball.png'),
-(29, 'The Equinox', 7, 1, '/shops/the_equinox.jpg'),
-(30, 'Runes and Rods', 7, 1, '/shops/runes_and_rods.jpeg'),
-(31, 'The Fireball', 7, 2, '/shops/the_fireball.png'),
-(32, 'The Equinox', 7, 2, '/shops/the_equinox.jpg'),
-(33, 'Runes and Rods', 7, 2, '/shops/runes_and_rods.jpeg'),
-(34, 'The Fireball', 8, 1, '/shops/the_fireball.png'),
-(35, 'The Equinox', 8, 1, '/shops/the_equinox.jpg'),
-(36, 'Runes and Rods', 8, 1, '/shops/runes_and_rods.jpeg');
+(37, 'The Fireball', 9, 1, '/shops/the_fireball.png'),
+(38, 'The Equinox', 9, 1, '/shops/the_equinox.jpg'),
+(39, 'Runes and Rods', 9, 1, '/shops/runes_and_rods.jpeg'),
+(40, 'The Fireball', 9, 2, '/shops/the_fireball.png'),
+(41, 'The Equinox', 9, 2, '/shops/the_equinox.jpg'),
+(42, 'Runes and Rods', 9, 2, '/shops/runes_and_rods.jpeg'),
+(43, 'The Fireball', 9, 3, '/shops/the_fireball.png'),
+(44, 'The Equinox', 9, 3, '/shops/the_equinox.jpg'),
+(45, 'Runes and Rods', 9, 3, '/shops/runes_and_rods.jpeg'),
+(46, 'The Fireball', 9, 4, '/shops/the_fireball.png'),
+(47, 'The Equinox', 9, 4, '/shops/the_equinox.jpg'),
+(48, 'Runes and Rods', 9, 4, '/shops/runes_and_rods.jpeg'),
+(49, 'The Fireball', 9, 5, '/shops/the_fireball.png'),
+(50, 'The Equinox', 9, 5, '/shops/the_equinox.jpg'),
+(51, 'Runes and Rods', 9, 5, '/shops/runes_and_rods.jpeg'),
+(52, 'The Fireball', 9, 6, '/shops/the_fireball.png'),
+(53, 'The Equinox', 9, 6, '/shops/the_equinox.jpg'),
+(54, 'Runes and Rods', 9, 6, '/shops/runes_and_rods.jpeg');
 
 -- --------------------------------------------------------
 
@@ -223,44 +164,42 @@ CREATE TABLE IF NOT EXISTS `shops_items` (
 --
 
 INSERT INTO `shops_items` (`id_shops`, `id_items`) VALUES
-(1, 1),
-(4, 3),
-(4, 5),
-(4, 7),
-(7, 3),
-(7, 4),
-(7, 5),
-(13, 1),
-(13, 2),
-(13, 3),
-(13, 4),
-(13, 5),
-(13, 7),
-(16, 2),
-(16, 4),
-(16, 5),
-(16, 7),
-(19, 2),
-(19, 4),
-(19, 5),
-(19, 7),
-(22, 1),
-(22, 2),
-(22, 4),
-(22, 5),
-(22, 7),
-(28, 1),
-(28, 2),
-(28, 3),
-(28, 4),
-(28, 5),
-(28, 7),
-(31, 1),
-(31, 2),
-(31, 3),
-(31, 4),
-(31, 5),
-(31, 7);
+(37, 1),
+(37, 2),
+(37, 3),
+(37, 4),
+(37, 5),
+(37, 7),
+(40, 1),
+(40, 2),
+(40, 3),
+(40, 4),
+(40, 5),
+(40, 7),
+(43, 1),
+(43, 2),
+(43, 3),
+(43, 4),
+(43, 5),
+(43, 7),
+(46, 1),
+(46, 2),
+(46, 3),
+(46, 4),
+(46, 5),
+(46, 7),
+(49, 1),
+(49, 2),
+(49, 3),
+(49, 4),
+(49, 5),
+(49, 7),
+(52, 1),
+(52, 2),
+(52, 3),
+(52, 4),
+(52, 5),
+(52, 7);
 
 -- --------------------------------------------------------
 
@@ -275,21 +214,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(50) NOT NULL,
   PRIMARY KEY (`id_users`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id_users`, `email`, `password`) VALUES
-(1, 'a', 'a'),
-(2, 'z', 'z'),
-(3, 'p', 'p'),
-(4, 'zzz', 'zzz'),
-(5, 'test@gmail.com', 'aze'),
-(6, 'blueberry@mail.com', '123456'),
-(7, 'mega@gmail.com', '12345'),
-(8, 'nicolas@gmail.com', 'test');
+(9, 'test@gmail.com', 'test');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
